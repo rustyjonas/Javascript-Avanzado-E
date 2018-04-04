@@ -58,3 +58,38 @@
     // añadido luego de haber sido creado el objeto, o si es una funcion que
     // retorna un objeto
 })(console.log);
+
+((c) =>{
+
+    c('******Asignacion de this Excplicita******')
+
+    const nombrar = function ( f1, f2, f3){
+        c(`${this.nombre} es el lenguagje Front end de la Web y tiene librerias y 
+        frameworks muy poderosos como: ${f1}, ${f2}, ${f3}`)
+    }
+
+    const lenguaje = {
+        nombre: 'JavaScript',
+        version: 6
+    }
+
+    let frameworks = ['Angular', 'React', 'Vue.js']
+
+    /*
+    * call: Permite definir a que va a hacer referencia this, en su primer
+    * parametro, los parametros siguientes son los que recibe la funcion
+    * */
+    nombrar.call (lenguaje, frameworks[0], frameworks[1], frameworks[2])
+    /*
+    * apply: Permite referenciar this en el primer parametro, pero este nos
+    * permite pasar un array, como los parametros de la funcion
+    * */
+    nombrar.apply( lenguaje, frameworks)
+    /*
+    * bind: devuelve una funcion, en donde this, hace referencia al objeto que pasamos
+    * en su parametro
+    * */
+    let frameworksJS = nombrar.bind( lenguaje, frameworks[0], frameworks[1],
+        frameworks[2] )
+        frameworksJS()
+})(console.log);
