@@ -93,3 +93,32 @@
         frameworks[2] )
         frameworksJS()
 })(console.log);
+((c) =>{
+    c('******Asignacion con new ******');
+    let Framework = function (nombre, url, lenguaje){
+        this.nombre = nombre
+        this.url = url
+        this.lenguaje = lenguaje
+    }
+    const react = new Framework('React' , 'https://facebook.github.io/react/',
+        'JavaScript'),
+        vue = Object.create(Framework)
+    vue.nombre = 'Vue.js'
+    c(react, vue)
+})(console.log);
+
+((c) =>{
+    c('******Asignacion Global******')
+    const dimeUnFramework = function (){
+        c(this.nombre)
+    }
+
+    dimeUnFramework()
+    // nombre = 'Angular'
+    window.nombre = 'Angular'
+    dimeUnFramework()
+})(console.log);
+
+((c) =>{
+
+})(console.log);
