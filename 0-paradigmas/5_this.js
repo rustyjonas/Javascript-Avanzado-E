@@ -115,10 +115,38 @@
 
     dimeUnFramework()
     // nombre = 'Angular'
-    window.nombre = 'Angular'
+    // window.nombre = 'Angular'
     dimeUnFramework()
 })(console.log);
 
 ((c) =>{
+    c('******Arrow Functions y el problema de this******')
 
+    const lenguaje = {
+        name: 'JavaScript',
+        version: 6,
+        frameworks: [
+            { name: 'Angular', url:'https://angular.io/'},
+            { name: 'React', url:'https://facebook.github.io/react/'},
+            { name: 'Vue.js', url:'https://vuejs.org'}
+        ],
+        nombrar: function(){
+            // El problema de this en JavaScript
+            // this.frameworks.forEach(function (fw){
+            //     c(`${fw.name} es una framework de ${this.name}`)
+            // })
+            //Solución ES3
+            // let that = this
+            // this.frameworks.forEach(function (fw) {
+            //     c(`${fw.name} es un framework de ${that.name}`)
+            // })
+            //Solucion ES5
+            // this.frameworks.forEach(function(fw){
+            //     c(`${fw.name} es un framework de ${this.name}`)
+            // }.bind(this))
+            //Solución ES6
+            this.frameworks.forEach(fw => c(`${fw.name} es un framework de ${this.name}`))
+        }
+    }
+    lenguaje.nombrar()
 })(console.log);
